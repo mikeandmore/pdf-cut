@@ -30,7 +30,7 @@ class MainWindow(object):
         dlg = self.builder.get_object('open_dlg')
         dlg.parent = self.wnd
 
-        if dlg.run():
+        if dlg.run() == 1:
             uri = dlg.get_uri()
             self.load_document(poppler.Document.new_from_file(uri, None))
             
@@ -79,7 +79,7 @@ class MainWindow(object):
         if hasattr(self.view, 'selection_start') and hasattr(self.view, 'selection_end') and self.view.page:
             dlg = self.builder.get_object('clip_save_dlg')
             dlg.parent = self.wnd
-            if dlg.run():
+            if dlg.run() == 1:
                 filename = dlg.get_filename()
                 if not filename.endswith(".pdf"):
                     filename = filename + '.pdf'
